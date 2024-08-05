@@ -1,14 +1,13 @@
 package org.plumdev.serve.entities;
 
 import jakarta.persistence.*;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 @Getter
 @Entity
 @Table(name = "media_items")
 public class MediaItem {
+
     @Id
     @Column(name = "id", updatable = false, nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,8 +19,7 @@ public class MediaItem {
 
     private String url;
 
-    public MediaItem() {
-    }
+    public MediaItem() {}
 
     public MediaItem(String title, String type, String url) {
         this.title = title;

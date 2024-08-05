@@ -1,15 +1,15 @@
 package org.plumdev.serve.controllers;
 
+import java.util.List;
 import org.plumdev.serve.entities.MediaItem;
 import org.plumdev.serve.services.MediaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
 @RequestMapping("/media")
 public class MediaController {
+
     private final MediaService mediaService;
 
     @Autowired
@@ -29,10 +29,6 @@ public class MediaController {
 
     @PostMapping(consumes = "application/json")
     public void addMediaItem(@RequestBody MediaItem mediaItem) {
-        mediaService.createMediaItem(
-                mediaItem.getTitle(),
-                mediaItem.getType(),
-                mediaItem.getUrl()
-        );
+        mediaService.createMediaItem(mediaItem.getTitle(), mediaItem.getType(), mediaItem.getUrl());
     }
 }
