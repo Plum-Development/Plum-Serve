@@ -13,7 +13,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @SpringBootTest
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class ApplicationTest {
+
     @Test
-    public void contextLoads() {
-    }
+    public void contextLoads() {}
 }

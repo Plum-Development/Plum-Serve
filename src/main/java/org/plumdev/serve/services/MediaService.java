@@ -1,18 +1,18 @@
 package org.plumdev.serve.services;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 import org.plumdev.serve.entities.MediaItem;
 import org.plumdev.serve.repositories.MediaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
 @Service
 public class MediaService {
+
     private final MediaRepository mediaRepository;
 
     @Autowired
@@ -26,11 +26,7 @@ public class MediaService {
     }
 
     public List<MediaItem> getAll() {
-        return StreamSupport.stream(
-                mediaRepository.findAll().spliterator(),
-                false
-                )
-                .collect(Collectors.toList());
+        return StreamSupport.stream(mediaRepository.findAll().spliterator(), false).collect(Collectors.toList());
     }
 
     public Optional<MediaItem> getById(Integer mediaItemId) {

@@ -11,19 +11,16 @@ import org.springframework.security.web.csrf.HttpSessionCsrfTokenRepository;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfiguration {
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
-                .csrf(csrf -> csrf.csrfTokenRepository(new HttpSessionCsrfTokenRepository()))
-                .authorizeHttpRequests((requests) -> requests
-                        .requestMatchers("/", "/media", "/media/*").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .permitAll()
-                )
-                .logout(LogoutConfigurer::permitAll)
-                .build();
+            .csrf(csrf -> csrf.csrfTokenRepository(new HttpSessionCsrfTokenRepository()))
+            .authorizeHttpRequests(requests ->
+                requests.requestMatchers("/", "/media", "/media/*").permitAll().anyRequest().authenticated()
+            )
+            .formLogin(form -> form.loginPage("/login").permitAll())
+            .logout(LogoutConfigurer::permitAll)
+            .build();
     }
 }
